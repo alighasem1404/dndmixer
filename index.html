@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RPG Sound Mixer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>RPG Sound Mixer</h1>
+  </header>
+
+  <div class="main-container">
+    <!-- Left Panel (Music Selection) -->
+    <div class="panel music-panel">
+      <h2>Music</h2>
+      <div class="music-selection">
+        <button class="music-btn" data-category="relax">Relax</button>
+        <button class="music-btn" data-category="sad">Sad</button>
+        <button class="music-btn" data-category="battle">Battle</button>
+        <button class="music-btn" data-category="mystical">Mystical</button>
+      </div>
+      <div class="sound-buttons">
+        <!-- Music track buttons will be loaded here dynamically -->
+      </div>
+    </div>
+
+    <!-- Right Panel (SFX) -->
+    <div class="panel sfx-panel">
+      <h2>SFX</h2>
+      <div class="sfx-buttons">
+        <!-- 15 SFX rows -->
+        <!-- We use a loop in the JS too, but here we show them explicitly -->
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="0">SFX 1</button>
+          <button class="set-sfx-btn" data-index="0">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="1">SFX 2</button>
+          <button class="set-sfx-btn" data-index="1">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="2">SFX 3</button>
+          <button class="set-sfx-btn" data-index="2">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="3">SFX 4</button>
+          <button class="set-sfx-btn" data-index="3">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="4">SFX 5</button>
+          <button class="set-sfx-btn" data-index="4">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="5">SFX 6</button>
+          <button class="set-sfx-btn" data-index="5">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="6">SFX 7</button>
+          <button class="set-sfx-btn" data-index="6">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="7">SFX 8</button>
+          <button class="set-sfx-btn" data-index="7">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="8">SFX 9</button>
+          <button class="set-sfx-btn" data-index="8">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="9">SFX 10</button>
+          <button class="set-sfx-btn" data-index="9">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="10">SFX 11</button>
+          <button class="set-sfx-btn" data-index="10">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="11">SFX 12</button>
+          <button class="set-sfx-btn" data-index="11">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="12">SFX 13</button>
+          <button class="set-sfx-btn" data-index="12">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="13">SFX 14</button>
+          <button class="set-sfx-btn" data-index="13">Set</button>
+        </div>
+        <div class="sfx-item">
+          <button class="sfx-btn" data-index="14">SFX 15</button>
+          <button class="set-sfx-btn" data-index="14">Set</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <!-- Volume controls for Music and SFX -->
+    <div class="volume-control music-volume">
+      <label for="music-volume">Music Volume</label>
+      <input type="range" id="music-volume" min="0" max="100" value="50">
+    </div>
+    <div class="volume-control sfx-volume">
+      <label for="sfx-volume">SFX Volume</label>
+      <input type="range" id="sfx-volume" min="0" max="100" value="50">
+    </div>
+  </div>
+
+  <footer>
+    <button id="settings">Settings</button>
+    <button id="help">Help</button>
+  </footer>
+
+  <!-- SFX Selection Modal -->
+  <div id="sfxModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="sfxModalClose">&times;</span>
+      <h2>Select SFX</h2>
+      <ul id="sfxOptionsList">
+        <!-- SFX options will be inserted by JavaScript -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="helpModalClose">&times;</span>
+      <h2>Help</h2>
+      <p>This app enables Dungeon Masters to control music and sound effects during a game session.</p>
+      <p>
+        <strong>Music:</strong> Click a music type (Relax, Sad, Battle, Mystical) to load the tracks. Then click any track to play it.
+      </p>
+      <p>
+        <strong>SFX:</strong> Each row has a play button and a "Set" button. Click "Set" to choose an SFX from the list. After choosing, the play button shows the SFX name; click it to play the sound.
+      </p>
+      <p>
+        <strong>Volume:</strong> Adjust the music and SFX volume separately using the sliders at the bottom.
+      </p>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="settingsModalClose">&times;</span>
+      <h2>Settings</h2>
+      <p>Settings functionality is under construction. (Placeholder for future buttons and functions.)</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
