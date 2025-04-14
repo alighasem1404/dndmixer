@@ -1,11 +1,9 @@
-/*************** Data Arrays and Objects ***************/
-
-// Dummy data for ambient sounds, music, and SFX.
+// Data arrays
 const ambientList = ["Forest", "City", "Ocean", "Wind", "Rain", "Cave", "River", "Night", "Thunder", "Snow"];
 const musicList = ["Relax", "Sad", "Battle", "Mystical", "Epic", "Calm", "Heroic", "Peaceful", "Suspense", "Adventurous"];
 const sfxOptions = ["Sword Clash", "Thunderstorm", "Explosion", "Footsteps", "Arrow Fly", "Magic Spark", "Dragon Roar", "Creaking Door", "Mystery Tone", "Battle Cry"];
 
-/*************** Modal Elements ***************/
+// Modal elements
 const ambientModal = document.getElementById("ambientModal");
 const musicModal = document.getElementById("musicModal");
 const sfxModal = document.getElementById("sfxModal");
@@ -18,70 +16,64 @@ const ambientOptionsList = document.getElementById("ambientOptionsList");
 const musicOptionsList = document.getElementById("musicOptionsList");
 const sfxOptionsList = document.getElementById("sfxOptionsList");
 
-/*************** Buttons to Open Modals ***************/
+// Buttons to open modals
 const setAmbientButtons = document.querySelectorAll(".set-ambient-btn");
 const setMusicButtons = document.querySelectorAll(".set-music-btn");
 const setSfxButtons = document.querySelectorAll(".set-sfx-btn");
 
-/*************** Functions for Opening Modals ***************/
-
-// Open Ambient Modal
-setAmbientButtons.forEach((btn, index) => {
-  btn.addEventListener("click", () => openAmbientModal(index));
+// Functions to open modals
+setAmbientButtons.forEach((btn) => {
+  btn.addEventListener("click", () => openAmbientModal(btn));
 });
 
-// Open Music Modal
-setMusicButtons.forEach((btn, index) => {
-  btn.addEventListener("click", () => openMusicModal(index));
+setMusicButtons.forEach((btn) => {
+  btn.addEventListener("click", () => openMusicModal(btn));
 });
 
-// Open SFX Modal
-setSfxButtons.forEach((btn, index) => {
-  btn.addEventListener("click", () => openSfxModal(index));
+setSfxButtons.forEach((btn) => {
+  btn.addEventListener("click", () => openSfxModal(btn));
 });
 
-// Populate and open Ambient Modal
-function openAmbientModal(index) {
-  populateOptionsList(ambientList, ambientOptionsList, index);
+// Open modals
+function openAmbientModal(button) {
+  const index = button.getAttribute("data-index");
+  populateOptionsList(ambientList, ambientOptionsList, index, "ambient");
   ambientModal.style.display = "block";
 }
 
-// Populate and open Music Modal
-function openMusicModal(index) {
-  populateOptionsList(musicList, musicOptionsList, index);
+function openMusicModal(button) {
+  const index = button.getAttribute("data-index");
+  populateOptionsList(musicList, musicOptionsList, index, "music");
   musicModal.style.display = "block";
 }
 
-// Populate and open SFX Modal
-function openSfxModal(index) {
-  populateOptionsList(sfxOptions, sfxOptionsList, index);
+function openSfxModal(button) {
+  const index = button.getAttribute("data-index");
+  populateOptionsList(sfxOptions, sfxOptionsList, index, "sfx");
   sfxModal.style.display = "block";
 }
 
-/*************** Populate Options in Modals ***************/
-function populateOptionsList(options, listElement, index) {
+// Populate modal with options
+function populateOptionsList(options, listElement, index, type) {
   listElement.innerHTML = "";
   options.forEach((option, i) => {
     const li = document.createElement("li");
     li.textContent = option;
     li.addEventListener("click", () => {
-      assignOptionToButton(option, index);
+      assignOptionToButton(option, index, type);
       closeAllModals();
     });
     listElement.appendChild(li);
   });
 }
 
-/*************** Assign Option to Button ***************/
-function assignOptionToButton(option, index) {
-  if (index < 10) {
-    const panelType = index < 10 ? "ambient" : "music";
-    const button = document.querySelector(`.${panelType}-btn[data-index="${index}"]`);
-    button.textContent = option;
-  }
+// Assign selected option to corresponding button
+function assignOptionToButton(option, index, type) {
+  const button = document.querySelector(`.${type}-btn[data-index="${index}"]`);
+  button.textContent = option;
 }
 
-/*************** Close All Modals ***************/
+// Close all modals
 function closeAllModals() {
   ambientModal.style.display = "none";
   musicModal.style.display = "none";
@@ -93,9 +85,51 @@ ambientModalClose.addEventListener("click", closeAllModals);
 musicModalClose.addEventListener("click", closeAllModals);
 sfxModalClose.addEventListener("click", closeAllModals);
 
-// Close modals if clicking outside of modal content
+// Close modals when clicking outside modal content
 window.addEventListener("click", (event) => {
   if (event.target === ambientModal) closeAllModals();
   if (event.target === musicModal) closeAllModals();
   if (event.target === sfxModal) closeAllModals();
+});
+
+
+// Modal elements for Help and Settings
+const helpModal = document.getElementById("helpModal");
+const helpModalClose = document.getElementById("helpModalClose");
+
+const settingsModal = document.getElementById("settingsModal");
+const settingsModalClose = document.getElementById("settingsModalClose");
+
+// Buttons to open Help and Settings modals
+const helpButton = document.getElementById("help");
+const settingsButton = document.getElementById("settings");
+
+// Open Help modal
+helpButton.addEventListener("click", () => {
+  helpModal.style.display = "block";
+});
+
+// Open Settings modal
+settingsButton.addEventListener("click", () => {
+  settingsModal.style.display = "block";
+});
+
+// Close Help modal when clicking the "X" button
+helpModalClose.addEventListener("click", () => {
+  helpModal.style.display = "none";
+});
+
+// Close Settings modal when clicking the "X" button
+settingsModalClose.addEventListener("click", () => {
+  settingsModal.style.display = "none";
+});
+
+// Close modals when clicking outside of modal content
+window.addEventListener("click", (event) => {
+  if (event.target === helpModal) {
+    helpModal.style.display = "none";
+  }
+  if (event.target === settingsModal) {
+    settingsModal.style.display = "none";
+  }
 });
