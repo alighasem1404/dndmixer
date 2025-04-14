@@ -18,13 +18,14 @@ header {
   padding: 20px;
 }
 
-/* Each panel occupies roughly one-third of the width */
+/* Each panel now takes roughly one-third of the width */
 .panel {
   background-color: #444;
   width: 30%;
   padding: 20px;
-  border-radius: 10px;
   box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -32,101 +33,44 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Ambient and Music selection styling (similar style) */
-.ambient-selection,
-.music-selection {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.ambient-btn,
-.music-btn {
+button {
   background-color: #5c5c5c;
   border: none;
   padding: 10px;
-  width: 22%;
+  margin-bottom: 10px;
   cursor: pointer;
   text-align: center;
+  width: 100%;
 }
 
-.ambient-btn:hover,
-.music-btn:hover {
+button:hover {
   background-color: #6f6f6f;
 }
 
-/* Sound buttons for Ambient and Music panels */
-.sound-buttons {
+/* Panel Buttons (Ambient, Music, SFX) */
+.ambient-buttons, .music-buttons, .sfx-buttons {
   display: flex;
   flex-direction: column;
 }
 
-.sound-btn {
-  background-color: #5c5c5c;
-  border: none;
-  padding: 10px;
-  margin: 5px 0;
-  cursor: pointer;
-}
-
-/* SFX Buttons */
-.sfx-buttons {
-  display: flex;
-  flex-direction: column;
-}
-
-.sfx-item {
+.ambient-item, .music-item, .sfx-item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.sfx-btn,
-.set-sfx-btn {
-  background-color: #5c5c5c;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  width: 48%;
-}
-
-.sfx-btn:hover,
-.set-sfx-btn:hover {
-  background-color: #6f6f6f;
-}
-
-/* Volume Controls */
-.controls {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-}
-
-.volume-control {
-  width: 30%;
-}
-
-input[type="range"] {
-  width: 100%;
-}
-
-/* Footer styling */
-footer {
-  background-color: #1a1a1a;
-  padding: 10px;
+.panel-volume {
+  margin-top: 20px;
   text-align: center;
 }
 
-button {
-  background-color: #5c5c5c;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin: 5px;
+.panel-volume label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-button:hover {
-  background-color: #6f6f6f;
+.panel-volume input[type="range"] {
+  width: 80%;
 }
 
 /* Modal styling */
@@ -139,7 +83,7 @@ button:hover {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
@@ -166,12 +110,12 @@ button:hover {
   color: #fff;
 }
 
-#sfxOptionsList {
+#ambientOptionsList, #musicOptionsList, #sfxOptionsList {
   list-style-type: none;
   padding-left: 0;
 }
 
-#sfxOptionsList li {
+#ambientOptionsList li, #musicOptionsList li, #sfxOptionsList li {
   background-color: #5c5c5c;
   margin: 5px 0;
   padding: 10px;
@@ -179,6 +123,6 @@ button:hover {
   text-align: center;
 }
 
-#sfxOptionsList li:hover {
+#ambientOptionsList li:hover, #musicOptionsList li:hover, #sfxOptionsList li:hover {
   background-color: #6f6f6f;
 }
