@@ -15,7 +15,12 @@
       <!-- Left Panel (Ambient Sounds) -->
       <div class="panel ambient-panel">
         <h2>Ambient Sounds</h2>
+        <audio id="ambient-player" controls loop>
+      
+          <source src="audio\sfx\Impact 01.mp3" type="audio/mpeg">
+        </audio>
         <div class="ambient-buttons">
+          
           <!-- 10 Ambient Buttons with "Set" buttons -->
           <div class="ambient-item">
             <button class="ambient-btn" data-index="0">Ambient 1</button>
@@ -60,7 +65,12 @@
       <!-- Middle Panel (Music) -->
       <div class="panel music-panel">
         <h2>Music</h2>
+        <audio id="music-player" controls loop>
+      
+          <source src="audio\sfx\Impact 01.mp3" type="audio/mpeg">
+        </audio>
         <div class="music-buttons">
+          
           <!-- 10 Music Buttons with "Set" buttons -->
           <div class="music-item">
             <button class="music-btn" data-index="0">Music 1</button>
@@ -98,17 +108,23 @@
             <button class="music-btn" data-index="8">Music 9</button>
             <button class="set-music-btn" data-index="8">Set</button>
           </div>
-          <div class="music-item">
-            <button class="music-btn" data-index="9">Music 10</button>
-            <button class="set-music-btn" data-index="9">Set</button>
-          </div>
+          
         </div>
       </div>
 
       <!-- Right Panel (SFX) -->
       <div class="panel sfx-panel">
         <h2>SFX</h2>
+        <div class="player">
+          <img src="https://cdn.midjourney.com/446e9588-334e-4b69-a98d-f161eb6d0b94/0_0.png" alt="SFX Image" class="sfx-image">
+          <audio id="sfx-player" controls loop>
+            <source src="audio\sfx\Impact 01.mp3" type="audio/mpeg">
+          </audio>
+
+        </div>
+        
         <div class="sfx-buttons">
+          
           <!-- 10 SFX Buttons with "Set" buttons -->
           <div class="sfx-item">
             <button class="sfx-btn" data-index="0">SFX 1</button>
@@ -146,17 +162,14 @@
             <button class="sfx-btn" data-index="8">SFX 9</button>
             <button class="set-sfx-btn" data-index="8">Set</button>
           </div>
-          <div class="sfx-item">
-            <button class="sfx-btn" data-index="9">SFX 10</button>
-            <button class="set-sfx-btn" data-index="9">Set</button>
-          </div>
+          
         </div>
       </div>
     </div>
 
-    <footer>
-      <button id="settings">Settings</button>
-      <button id="help">Help</button>
+    <footer class="footer">
+      <button class="settings-btn" id="settings">&#9881;</button>
+      <button class="help-btn" id="help">Help</button>
     </footer>
 
     <!-- SFX Selection Modal -->
