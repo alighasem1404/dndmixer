@@ -147,14 +147,25 @@ button:active {
 #ambientOptionsList, #musicOptionsList, #sfxOptionsList {
   list-style-type: none;
   padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #ambientOptionsList li, #musicOptionsList li, #sfxOptionsList li {
-  background-color: #5c5c5c;
+  
+  width: 10%;
+  aspect-ratio: 16/9;
+  background-color: #5c4a2b;
   margin: 5px 0;
   padding: 10px;
   cursor: pointer;
   text-align: center;
+  border-radius: 5px;
+  vertical-align: middle;
 }
 
 #ambientOptionsList li:hover, #musicOptionsList li:hover, #sfxOptionsList li:hover {
@@ -191,7 +202,7 @@ button:active {
   display: flex;
 }
 
-.player img{
+.sfx-player img,.music-player img, .ambient-player img{
   width: 50%;
   margin-left: 25%;
 
