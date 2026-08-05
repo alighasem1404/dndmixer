@@ -1,49 +1,69 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #2c2f38;
-  color: #fff;
+  background: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
 }
 
 header {
-  background-color: #1a1a1a;
-  padding: 20px;
+  background: #0f0f0f;
+  padding: 24px 16px;
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .main-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 24px;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .panel {
-  background-color: #444;
+  background: #1e1e1e;
   width: 30%;
-  padding: 20px;
+  padding: 24px;
   box-sizing: border-box;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border: 1px solid #333;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #f0f0f0;
 }
 
-/* Container for the buttons */
+/* Button container */
 .button-container {
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-/* Base styles for each button */
+/* Base button */
+/* --- Buttons (Modern Flat/Neumorphic style) --- */
+.button-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 button {
-  background-color: #7f6e3d;
-  border: 3px solid #5c4a2b;
+  background-color: #2c2c2c;
+  border: 1px solid #404040;
   border-radius: 12px;
   width: 100px;
   height: 80px;
@@ -51,193 +71,248 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-family: 'Arial', sans-serif;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
   text-align: center;
   padding: 10px;
-  color: #e8d69d;
-  font-weight: bold;
-  font-size: 14px;
+  color: #ccc;
+  font-weight: 600;
+  font-size: 13px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Hover effect */
 button:hover {
-  background-color: #9e8c5f;
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #666;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Active effect */
 button:active {
-  background-color: #7a6937;
-  transform: scale(0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #252525;
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Panel Buttons (Ambient, Music, SFX) */
+/* Specific Button Sizes & Icons */
+.button-icon {
+  width: 32px; /* Adjusted size for balance */
+  height: 32px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  filter: grayscale(100%); /* Make icons neutral */
+  transition: 0.2s;
+}
+
+button:hover .button-icon {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.button-text {
+  color: inherit;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.set-sfx-btn, .set-ambient-btn, .set-music-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* Circular action buttons */
+}
+
+.help-btn, .settings-btn {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.help-btn:hover, .settings-btn:hover {
+  background-color: rgba(255,255,255,0.05);
+  transform: rotate(15deg);
+}
+
+.settings-btn {
+  font-size: 1.5rem;
+}
+
+/* Panel button groups */
 .ambient-buttons, .music-buttons, .sfx-buttons {
-  padding-left: 40px;
+  padding-left: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
+  justify-content: center;
 }
 
 .ambient-item, .music-item, .sfx-item {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 .panel-volume {
-  margin-top: 20px;
+  margin-top: 24px;
   text-align: center;
 }
 
 .panel-volume label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #ccc;
 }
 
 .panel-volume input[type="range"] {
-  width: 80%;
+  width: 85%;
+  height: 6px;
+  background: #2a2a2a;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
 }
 
-/* Modal styling */
+.panel-volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d4c090;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
   z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
 }
 
 .modal-content {
-  background-color: #444;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
+  background: #1e1e1e;
+  margin: 8% auto;
+  padding: 28px;
+  border: 1px solid #333;
   width: 80%;
+  max-width: 600px;
   position: relative;
-  border-radius: 10px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .close {
   color: #aaa;
   position: absolute;
   right: 20px;
-  top: 10px;
+  top: 16px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .close:hover {
   color: #fff;
 }
 
+/* Option lists */
 #ambientOptionsList, #musicOptionsList, #sfxOptionsList {
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-#ambientOptionsList li, #musicOptionsList li, #sfxOptionsList li {
-  
-  width: 10%;
+#ambientOptionsList li,
+#musicOptionsList li,
+#sfxOptionsList li {
+  flex: 0 0 calc(20% - 12px);
+  min-width: 80px;
   aspect-ratio: 16/9;
-  background-color: #5c4a2b;
-  margin: 5px 0;
-  padding: 10px;
+  background: #2a251a;
+  margin: 6px 0;
+  padding: 10px 4px;
   cursor: pointer;
   text-align: center;
-  border-radius: 5px;
-  vertical-align: middle;
-}
-
-#ambientOptionsList li:hover, #musicOptionsList li:hover, #sfxOptionsList li:hover {
-  background-color: #6f6f6f;
-}
-
-/* Optional: Button with image and text */
-.button-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 8px;
-}
-
-.button-text {
-  color: #e8d69d;
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-.set-sfx-btn, .set-ambient-btn, .set-music-btn {
-  width: 40px;
-  height: 40px;
-}
-
-.help-btn, .settings-btn{
-  width: 50px;
-  height: 50px;
-}
-.settings-btn{
-  font-size: 2rem;
-}
-
-.footer{
+  border-radius: 8px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8d69d;
+  font-size: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border: 1px solid #3d3522;
 }
 
-.sfx-player img,.music-player img, .ambient-player img{
+#ambientOptionsList li:hover,
+#musicOptionsList li:hover,
+#sfxOptionsList li:hover {
+  background: #352f22;
+  transform: scale(1.03);
+}
+
+
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 16px;
+}
+
+.sfx-player img,
+.music-player img,
+.ambient-player img {
   width: 50%;
   margin-left: 25%;
-
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-
-/* Style for the audio player */
+/* Audio player */
 audio {
   width: 100%;
   max-width: 500px;
-  margin: 10px auto;
+  margin: 16px auto;
   display: block;
-  background-color: transparent;
- }
+  background: transparent;
+  outline: none;
+}
 
+/* Customize WebKit audio controls */
 audio::-webkit-media-controls-panel {
-  background-color: #7a6937; /* Match button color */
-  border-radius: 5px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  border: 1px solid #333;
 }
 
 audio::-webkit-media-controls-play-button,
-audio::-webkit-media-controls-volume-slider {
-  background-color: #7a6937; /* Match button color */
-
-  border-radius: 50%;
-}
-
+audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-timeline {
-  background-color: #7a6937; /* Match button color */
-
-  border-radius: 5px;
+  filter: invert(0.8) hue-rotate(180deg);
 }
 
-audio::-webkit-media-controls-play-button{
-  background-color: #7a6937; /* Match button color */
-  border-radius: 50%; 
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: #ccc;
+  font-size: 12px;
 }
-

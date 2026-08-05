@@ -1,247 +1,247 @@
-//data arrays
+// --- 1. FALLBACK DATA (For Preview Environment) ---
+const FALLBACK_DATA = {
+    ambient: [
+        { name: "City", img: "images/city.jpg" },
+        { name: "Marketplace", img: "images/marketplace.jpg" },
+        { name: "Tavern/Inn", img: "images/tavern_inn.jpg" },
+        { name: "Dungeon", img: "images/dungeon_prison.jpg" },
+        { name: "Forest", img: "images/forest.jpg" },
+        { name: "Battlefield", img: "images/battlefield.jpg" },
+        { name: "Storm", img: "images/storm.jpg" },
+        { name: "Ocean", img: "images/open_sea.jpg" }
+    ],
+    music: [
+        { name: "Calm", img: "images/calm_peaceful.jpg" },
+        { name: "Epic", img: "images/heroic_epic.jpg" },
+        { name: "Eerie", img: "images/creepy_eerie.jpg" },
+        { name: "Battle", img: "images/battle_action.jpg" },
+        { name: "Tavern", img: "images/happy_festive.jpg" },
+        { name: "Mystery", img: "images/mysterious_mystical.jpg" }
+    ],
+    sfx: [
+        { name: "Sword Clash", img: "images/war_cry.jpg" },
+        { name: "Fireball", img: "images/fireball_explosion.jpg" },
+        { name: "Monster Roar", img: "images/monster_roar.jpg" },
+        { name: "Gold Drop", img: "images/coin_drop.jpg" },
+        { name: "Arrow", img: "images/arrow_volley.jpg" },
+        { name: "Trap", img: "images/trap_trigger.jpg" }
+    ]
+};
 
-// List of ambient options
-const ambientList = [
-  { name: "City", img: "images/city.jpg" },
-  { name: "Marketplace", img: "images/marketplace.jpg" },
-  { name: "Tavern/Inn", img: "images/tavern_inn.jpg" },
-  { name: "Blacksmith Forge", img: "images/blacksmith_forge.jpg" },
-  { name: "Harbour/Docks", img: "images/harbour_docks.jpg" },
-  { name: "Dungeon/Prison", img: "images/dungeon_prison.jpg" },
-  { name: "Sewers", img: "images/sewers.jpg" },
-  { name: "Throne Room", img: "images/throne_room.jpg" },
-  { name: "Castle Courtyard", img: "images/castle_courtyard.jpg" },
-  { name: "Castle Kitchen", img: "images/castle_kitchen.jpg" },
-  { name: "Stables", img: "images/stables.jpg" },
-  { name: "Secret Passageway", img: "images/secret_passageway.jpg" },
-  { name: "Cathedral/Temple", img: "images/cathedral_temple.jpg" },
-  { name: "Sacred Grove", img: "images/sacred_grove.jpg" },
-  { name: "Forest", img: "images/forest.jpg" },
-  { name: "Enchanted Forest", img: "images/enchanted_forest.jpg" },
-  { name: "Swamp", img: "images/swamp.jpg" },
-  { name: "Mountain Pass", img: "images/mountain_pass.jpg" },
-  { name: "Cave", img: "images/cave.jpg" },
-  { name: "Mine", img: "images/mine.jpg" },
-  { name: "Battlefield", img: "images/battlefield.jpg" },
-  { name: "Training Grounds", img: "images/training_grounds.jpg" },
-  { name: "Siege Camp", img: "images/siege_camp.jpg" },
-  { name: "Ship Deck", img: "images/ship_deck.jpg" },
-  { name: "Open Sea", img: "images/open_sea.jpg" },
-  { name: "Pirate Cove", img: "images/pirate_cove.jpg" },
-  { name: "Wizard’s Tower", img: "images/wizards_tower.jpg" },
-  { name: "Magical Library", img: "images/magical_library.jpg" },
-  { name: "Portal", img: "images/portal.jpg" },
-  { name: "Desert", img: "images/desert.jpg" },
-  { name: "Ruins", img: "images/ruins.jpg" },
-  { name: "Graveyard", img: "images/graveyard.jpg" },
-];
+// --- 2. GLOBAL VARIABLES ---
+let ambientList = [];
+let musicList = [];
+let sfxOptions = [];
 
-// List of music options
-const musicList = [
-  { name: "Calm / Peaceful", img: "images/calm_peaceful.jpg" },
-  { name: "Happy / Festive", img: "images/happy_festive.jpg" },
-  { name: "Sad / Melancholic", img: "images/sad_melancholic.jpg" },
-  { name: "Romantic / Nostalgic", img: "images/romantic_nostalgic.jpg" },
-  { name: "Heroic / Epic", img: "images/heroic_epic.jpg" },
-  { name: "Adventurous / Energetic", img: "images/adventurous_energetic.jpg" },
-  { name: "Tense / Suspenseful", img: "images/tense_suspenseful.jpg" },
-  { name: "Mysterious / Mystical", img: "images/mysterious_mystical.jpg" },
-  { name: "Magical / Enchanting", img: "images/magical_enchanting.jpg" },
-  { name: "Creepy / Eerie", img: "images/creepy_eerie.jpg" },
-  { name: "Dark / Sinister", img: "images/dark_sinister.jpg" },
-  { name: "Solemn / Majestic", img: "images/solemn_majestic.jpg" },
-  { name: "Battle / Action", img: "images/battle_action.jpg" },
-  { name: "Ominous / Threatening", img: "images/ominous_threatening.jpg" },
-];
-
-// Updated SFX options list
-const sfxOptions = [
-  { name: "War Cry / Battle Shout", img: "images/war_cry.jpg" },
-  { name: "Arrow Volley / Single Shot", img: "images/arrow_volley.jpg" },
-  { name: "Magic Surge / Wild Magic Effect", img: "images/magic_surge.jpg" },
-  { name: "Fireball Explosion", img: "images/fireball_explosion.jpg" },
-  { name: "Lightning Strike", img: "images/lightning_strike.jpg" },
-  { name: "Summoning Magic", img: "images/summoning_magic.jpg" },
-  { name: "Divine Blessing / Holy Light", img: "images/divine_blessing.jpg" },
-  { name: "Teleportation", img: "images/teleportation.jpg" },
-  { name: "Portal Activation", img: "images/portal_activation.jpg" },
-  { name: "Monster Roar / Creature Reveal", img: "images/monster_roar.jpg" },
-  { name: "Dragon Roar", img: "images/dragon_roar.jpg" },
-  { name: "Undead Rising / Ghostly Howl", img: "images/undead_rising.jpg" },
-  { name: "Trap Trigger / Spike Trap", img: "images/trap_trigger.jpg" },
-  { name: "Cracking Ice / Frozen Ground Break", img: "images/cracking_ice.jpg" },
-  { name: "Ancient Mechanism / Puzzle Click", img: "images/ancient_mechanism.jpg" },
-  { name: "Lock Click / Failed Lockpick", img: "images/lock_click.jpg" },
-  { name: "Chest Unlock / Treasure Reveal", img: "images/chest_unlock.jpg" },
-  { name: "Coin Drop / Gold Spill", img: "images/coin_drop.jpg" },
-  { name: "Cricket Sound at Night", img: "images/cricket_sound.jpg" },
-  { name: "Ritual Chanting / Magic Circle", img: "images/ritual_chanting.jpg" },
-  { name: "Distant War Horn / Signal Call", img: "images/distant_war_horn.jpg" },
-  { name: "Siege Weapons / Catapult Launch", img: "images/siege_weapons.jpg" },
-  { name: "Waterfall", img: "images/waterfall.jpg" },
-  { name: "Explosion / Collapse", img: "images/explosion_collapse.jpg" },
-  { name: "Mysterious Whisper / Distant Voice", img: "images/mysterious_whisper.jpg" },
-  { name: "Faint Footsteps", img: "images/faint_footsteps.jpg" },
-  { name: "Evil Laugh / Villain Reveal", img: "images/evil_laugh.jpg" },
-  { name: "Glass Breaking", img: "images/glass_breaking.jpg" },
-  { name: "Bell Toll / Ominous Warning", img: "images/bell_toll.jpg" },
-  { name: "Crowd Screaming", img: "images/crowd_screaming.jpg" },
-  { name: "Monster Howling", img: "images/monster_howling.jpg" },
-  { name: "Faint Crying", img: "images/faint_crying.jpg" },
-];
-
-
-// Modal elements
+// --- 3. DOM ELEMENTS ---
 const ambientModal = document.getElementById("ambientModal");
 const musicModal = document.getElementById("musicModal");
 const sfxModal = document.getElementById("sfxModal");
-
-const ambientModalClose = document.getElementById("ambientModalClose");
-const musicModalClose = document.getElementById("musicModalClose");
-const sfxModalClose = document.getElementById("sfxModalClose");
 
 const ambientOptionsList = document.getElementById("ambientOptionsList");
 const musicOptionsList = document.getElementById("musicOptionsList");
 const sfxOptionsList = document.getElementById("sfxOptionsList");
 
-// Buttons to open modals
-const setAmbientButtons = document.querySelectorAll(".set-ambient-btn");
-const setMusicButtons = document.querySelectorAll(".set-music-btn");
-const setSfxButtons = document.querySelectorAll(".set-sfx-btn");
-
-// Functions to open modals
-setAmbientButtons.forEach((btn) => {
-  btn.addEventListener("click", () => openAmbientModal(btn));
-});
-
-setMusicButtons.forEach((btn) => {
-  btn.addEventListener("click", () => openMusicModal(btn));
-});
-
-setSfxButtons.forEach((btn) => {
-  btn.addEventListener("click", () => openSfxModal(btn));
-});
-
-// Open modals
-function openAmbientModal(button) {
-  const index = button.getAttribute("data-index");
-  populateOptionsList(ambientList, ambientOptionsList, index, "ambient");
-  ambientModal.style.display = "block";
+// --- 4. DATA LOADING ---
+async function initApp() {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        ambientList = data.ambient;
+        musicList = data.music;
+        sfxOptions = data.sfx;
+        console.log("Data loaded successfully from JSON.");
+    } catch (error) {
+        console.warn("Could not load 'data.json' (Using fallback data).");
+        ambientList = FALLBACK_DATA.ambient;
+        musicList = FALLBACK_DATA.music;
+        sfxOptions = FALLBACK_DATA.sfx;
+    }
+    setupEventListeners();
 }
 
-function openMusicModal(button) {
-  const index = button.getAttribute("data-index");
-  populateOptionsList(musicList, musicOptionsList, index, "music");
-  musicModal.style.display = "block";
+// --- 5. LOGIC & UI FUNCTIONS ---
+
+function setupEventListeners() {
+    // Set Buttons (Open Modals)
+    document.querySelectorAll(".set-ambient-btn").forEach((btn) => {
+        btn.addEventListener("click", () => openModal(ambientModal, ambientList, ambientOptionsList, btn, "ambient"));
+    });
+
+    document.querySelectorAll(".set-music-btn").forEach((btn) => {
+        btn.addEventListener("click", () => openModal(musicModal, musicList, musicOptionsList, btn, "music"));
+    });
+
+    document.querySelectorAll(".set-sfx-btn").forEach((btn) => {
+        btn.addEventListener("click", () => openModal(sfxModal, sfxOptions, sfxOptionsList, btn, "sfx"));
+    });
+
+    // Play Buttons (Trigger Sound/Update Player)
+    document.querySelectorAll(".ambient-btn, .music-btn, .sfx-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const name = btn.getAttribute("data-sound-name");
+            const img = btn.getAttribute("data-sound-img");
+            const audioPath = btn.getAttribute("data-sound-audio");
+            
+            if (btn.classList.contains("ambient-btn")) {
+                playTrack("ambient", name, img, audioPath);
+            } else if (btn.classList.contains("music-btn")) {
+                playTrack("music", name, img, audioPath);
+            } else if (btn.classList.contains("sfx-btn")) {
+                playTrack("sfx", name, img, audioPath);
+            }
+        });
+    });
+
+    // Close Buttons
+    document.getElementById("ambientModalClose").addEventListener("click", () => closeModal(ambientModal));
+    document.getElementById("musicModalClose").addEventListener("click", () => closeModal(musicModal));
+    document.getElementById("sfxModalClose").addEventListener("click", () => closeModal(sfxModal));
+
+    // Window Click (Close outside)
+    window.addEventListener("click", (event) => {
+        if (event.target === ambientModal) closeModal(ambientModal);
+        if (event.target === musicModal) closeModal(musicModal);
+        if (event.target === sfxModal) closeModal(sfxModal);
+        if (event.target === document.getElementById("helpModal")) document.getElementById("helpModal").style.display = "none";
+        if (event.target === document.getElementById("settingsModal")) document.getElementById("settingsModal").style.display = "none";
+    });
+    
+    // Help & Settings
+    document.getElementById("help").addEventListener("click", () => document.getElementById("helpModal").style.display = "flex");
+    document.getElementById("helpModalClose").addEventListener("click", () => document.getElementById("helpModal").style.display = "none");
+    
+    document.getElementById("settings").addEventListener("click", () => document.getElementById("settingsModal").style.display = "flex");
+    document.getElementById("settingsModalClose").addEventListener("click", () => document.getElementById("settingsModal").style.display = "none");
 }
 
-function openSfxModal(button) {
-  const index = button.getAttribute("data-index");
-  populateOptionsList(sfxOptions, sfxOptionsList, index, "sfx");
-  sfxModal.style.display = "block";
+// Helper function to construct audio path from name
+function constructAudioPath(type, name) {
+    // Sanitize the name to match file naming (remove special chars, spaces, etc.)
+    const sanitizedName = name
+        .replace(/[\/\\]/g, '')  // Remove slashes
+        .replace(/\s+/g, ' ')     // Normalize spaces
+        .trim();
+    
+    // Construct path: audio/{type}/{sanitizedName}.mp3
+    return `audio/${type}/${sanitizedName}.mp3`;
 }
 
-// Populate modal with options
-function populateOptionsList(options, listElement, index, type) {
-  listElement.innerHTML = "";
-  options.forEach((option, i) => {
-    const li = document.createElement("li");
-    li.classList.add("option-item");
+// --- PLAYBACK LOGIC ---
+function playTrack(type, name, imgSrc, audioPath) {
+    if (!name) return; // Button is empty
+
+    // Select the display image and audio player for the correct panel
+    const panel = document.querySelector(`.${type}-panel`);
+    const displayImg = panel ? panel.querySelector('.sfx-image') : null;
+    const audioPlayer = document.getElementById(`${type}-mp3-player`);
+
+    if (!audioPlayer) {
+        console.error(`Audio player not found for type: ${type}`);
+        return;
+    }
+
+    // Update Image
+    if (displayImg && imgSrc) {
+        displayImg.src = imgSrc;
+        // Add a simple fade animation reset
+        displayImg.style.opacity = '0.5';
+        setTimeout(() => displayImg.style.opacity = '1', 50);
+    }
+
+    // Use provided audio path or construct one
+    const finalAudioPath = audioPath || constructAudioPath(type, name);
+    
+    // Set audio source and play
+    audioPlayer.src = finalAudioPath;
+    audioPlayer.load(); // Reload the audio element
+    
+    // Play the audio
+    audioPlayer.play().catch(error => {
+        console.warn(`Could not play audio: ${finalAudioPath}`, error);
+        // If the file doesn't exist, you might want to try alternative paths or show an error
+    });
+    
+    console.log(`Playing ${type}: ${name} from ${finalAudioPath}`);
+}
+
+function openModal(modal, dataList, listElement, button, type) {
+    populateOptionsList(dataList, listElement, button, type);
+    modal.style.display = "flex";
+}
+
+function closeModal(modal) {
+    modal.style.display = "none";
+}
+
+function populateOptionsList(options, listElement, setButton, type) {
+    listElement.innerHTML = "";
+    
+    options.forEach((option) => {
+        const li = document.createElement("li");
+        
+        const img = document.createElement("img");
+        img.src = option.img;
+        img.alt = option.name;
+        img.onerror = function() { 
+            this.src = "https://via.placeholder.com/100?text=Icon"; 
+        };
+
+        const span = document.createElement("span");
+        span.textContent = option.name;
+
+        li.appendChild(img);
+        li.appendChild(span);
+
+        li.addEventListener("click", () => {
+            assignOptionToButton(option, setButton, type);
+            closeModal(setButton.closest('body').querySelector('#' + type + 'Modal'));
+        });
+
+        listElement.appendChild(li);
+    });
+}
+
+// --- KEY FIX HERE ---
+function assignOptionToButton(option, setButton, type) {
+    // 1. Get index from the clicked SET button
+    const index = setButton.getAttribute("data-index");
+
+    // 2. Find the corresponding PLAY button (which is the sibling button with class .{type}-btn)
+    // Example: If type is 'ambient', looking for .ambient-btn with data-index="0"
+    const playButton = document.querySelector(`.${type}-btn[data-index="${index}"]`);
+    
+    if (!playButton) {
+        console.error("Play button not found for index:", index);
+        return;
+    }
+
+    // 3. Update the PLAY button content
+    playButton.innerHTML = ""; // Clear existing "Empty" text
 
     const img = document.createElement("img");
     img.src = option.img;
+    img.className = "button-icon";
     img.alt = option.name;
-    img.classList.add("option-image");
+    img.onerror = function() { this.style.display = 'none'; };
 
-    const span = document.createElement("span");
-    span.textContent = option.name;
+    const text = document.createElement("span");
+    text.textContent = option.name;
+    text.className = "button-text";
 
-    li.appendChild(img);
-    li.appendChild(span);
+    playButton.appendChild(img);
+    playButton.appendChild(text);
 
-    li.addEventListener("click", () => {
-      assignOptionToButton(option, index, type);
-      closeAllModals();
-    });
-
-    listElement.appendChild(li);
-  });
+    // 4. Store data on the play button so we know what to play when clicked
+    playButton.setAttribute("data-sound-name", option.name);
+    playButton.setAttribute("data-sound-img", option.img);
+    
+    // Store audio path if it exists in the option, otherwise construct it
+    const audioPath = option.audio || constructAudioPath(type, option.name);
+    playButton.setAttribute("data-sound-audio", audioPath);
+    
+    playButton.style.borderColor = "#e8d69d"; // Visual feedback that it's active
 }
 
-// Assign selected option to corresponding button
-function assignOptionToButton(option, index, type) {
-  const button = document.querySelector(`.${type}-btn[data-index="${index}"]`);
-  button.innerHTML = ""; // Clear existing content
-
-  const img = document.createElement("img");
-  img.src = option.img;
-  img.alt = option.name;
-  img.classList.add("button-image");
-
-  const span = document.createElement("span");
-  span.textContent = option.name;
-
-  button.appendChild(img);
-  button.appendChild(span);
-}
-
-// Close all modals
-function closeAllModals() {
-  ambientModal.style.display = "none";
-  musicModal.style.display = "none";
-  sfxModal.style.display = "none";
-}
-
-// Close modals when clicking the "x" button
-ambientModalClose.addEventListener("click", closeAllModals);
-musicModalClose.addEventListener("click", closeAllModals);
-sfxModalClose.addEventListener("click", closeAllModals);
-
-// Close modals when clicking outside modal content
-window.addEventListener("click", (event) => {
-  if (event.target === ambientModal) closeAllModals();
-  if (event.target === musicModal) closeAllModals();
-  if (event.target === sfxModal) closeAllModals();
-});
-
-
-// Modal elements for Help and Settings
-const helpModal = document.getElementById("helpModal");
-const helpModalClose = document.getElementById("helpModalClose");
-
-const settingsModal = document.getElementById("settingsModal");
-const settingsModalClose = document.getElementById("settingsModalClose");
-
-// Buttons to open Help and Settings modals
-const helpButton = document.getElementById("help");
-const settingsButton = document.getElementById("settings");
-
-// Open Help modal
-helpButton.addEventListener("click", () => {
-  helpModal.style.display = "block";
-});
-
-// Open Settings modal
-settingsButton.addEventListener("click", () => {
-  settingsModal.style.display = "block";
-});
-
-// Close Help modal when clicking the "X" button
-helpModalClose.addEventListener("click", () => {
-  helpModal.style.display = "none";
-});
-
-// Close Settings modal when clicking the "X" button
-settingsModalClose.addEventListener("click", () => {
-  settingsModal.style.display = "none";
-});
-
-// Close modals when clicking outside of modal content
-window.addEventListener("click", (event) => {
-  if (event.target === helpModal) {
-    helpModal.style.display = "none";
-  }
-  if (event.target === settingsModal) {
-    settingsModal.style.display = "none";
-  }
-});
+document.addEventListener("DOMContentLoaded", initApp);
